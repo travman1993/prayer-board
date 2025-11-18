@@ -14,9 +14,6 @@
       ]
     }
   }
-  EOF
-  cat /mnt/user-data/outputs/firebase.json
-  Output
   
   {
     "hosting": {
