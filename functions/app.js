@@ -1,10 +1,11 @@
-// State
+// State - stored only in browser memory (resets on page refresh)
 let currentTab = 'prayer';
 let allPosts = [];
 
 // DOM Elements
 const onboardingModal = document.getElementById('onboarding-modal');
 const onboardingBtn = document.getElementById('onboarding-btn');
+const appWrapper = document.getElementById('app-wrapper');
 const tabBtns = document.querySelectorAll('.tab');
 const postTextarea = document.getElementById('post-textarea');
 const charCount = document.getElementById('char-count');
@@ -13,7 +14,7 @@ const feedList = document.getElementById('feed-list');
 const feedEmpty = document.getElementById('feed-empty');
 const loading = document.getElementById('loading');
 
-// Check onboarding status
+// Check onboarding status (localStorage)
 function checkOnboarding() {
   const hasSeenOnboarding = localStorage.getItem('lifted-onboarded');
   if (hasSeenOnboarding) {
@@ -22,7 +23,8 @@ function checkOnboarding() {
 }
 
 function hideOnboarding() {
-  onboardingModal.classList.remove('modal--active');
+  onboardingModal.style.display = 'none';
+  appWrapper.style.display = 'block';
 }
 
 // Onboarding button handler
@@ -39,7 +41,7 @@ tabBtns.forEach(btn => {
     tabBtns.forEach(b => b.classList.remove('tab--active'));
     e.target.classList.add('tab--active');
     updatePlaceholder();
-    refreshFeed();
+    renderFeed();
   });
 });
 
@@ -58,7 +60,7 @@ postTextarea.addEventListener('input', (e) => {
 });
 
 // Post submission
-postBtn.addEventListener('click', async () => {
+postBtn.addEventListener('click', () => {
   const text = postTextarea.value.trim();
   
   if (!text) {
@@ -72,65 +74,67 @@ postBtn.addEventListener('click', async () => {
   }
 
   try {
-    showLoading(true);
+    // Get a random response
+    const randomResponse = getRandomResponse(currentTab);
     
-    // Save to Firestore
-    await db.collection('posts').add({
+    // Create user's post object
+    const userPost = {
+      id: generateId(),
       type: currentTab,
       text: text,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      createdAt: new Date(),
       prayedCount: 0,
       reportCount: 0,
       isHidden: false
-    });
+    };
     
+    // Create response post
+    const responsePost = {
+      id: generateId(),
+      type: currentTab,
+      text: randomResponse,
+      createdAt: new Date(Date.now() + 1000), // Slightly later
+      prayedCount: 0,
+      reportCount: 0,
+      isHidden: false,
+      isSystemResponse: true,
+      respondingToId: userPost.id
+    };
+    
+    // Add both to allPosts
+    allPosts.unshift(responsePost);
+    allPosts.unshift(userPost);
+    
+    // Clear form
     postTextarea.value = '';
     charCount.textContent = '0 / 1000';
-    await refreshFeed();
+    
+    // Refresh display
+    renderFeed();
+    
+    // Show success notification
+    showSuccessNotification(randomResponse);
     
   } catch (error) {
     console.error('Error posting:', error);
     alert('Failed to post. Please try again.');
-  } finally {
-    showLoading(false);
   }
 });
-
-// Refresh feed from Firestore
-async function refreshFeed() {
-  try {
-    const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
-    
-    const snapshot = await db.collection('posts')
-      .where('type', '==', currentTab)
-      .where('isHidden', '==', false)
-      .where('createdAt', '>=', sevenDaysAgo)
-      .orderBy('createdAt', 'desc')
-      .limit(50)
-      .get();
-    
-    allPosts = snapshot.docs.map(doc => ({
-      id: doc.id,
-      ...doc.data()
-    }));
-    
-    renderFeed();
-  } catch (error) {
-    console.error('Error refreshing feed:', error);
-  }
-}
 
 function renderFeed() {
   feedList.innerHTML = '';
   
-  if (allPosts.length === 0) {
+  // Filter posts by current tab
+  const filteredPosts = allPosts.filter(post => post.type === currentTab && !post.isHidden);
+  
+  if (filteredPosts.length === 0) {
     feedEmpty.style.display = 'block';
     return;
   }
   
   feedEmpty.style.display = 'none';
   
-  allPosts.forEach(post => {
+  filteredPosts.forEach(post => {
     const postEl = createPostElement(post);
     feedList.appendChild(postEl);
   });
@@ -138,23 +142,27 @@ function renderFeed() {
 
 function createPostElement(post) {
   const div = document.createElement('div');
-  div.className = 'post';
+  div.className = post.isSystemResponse ? 'post post--response' : 'post';
   
   const typeClass = post.type === 'prayer' ? 'post__type--prayer' : 'post__type--confession';
   const typeLabel = post.type === 'prayer' ? 'Prayer Request' : 'Confession';
+  const responseBadge = post.isSystemResponse ? '<span class="post__response-badge">Community Response</span>' : '';
   
   const timeAgo = getTimeAgo(post.createdAt);
   
   div.innerHTML = `
-    <span class="post__type ${typeClass}">${typeLabel}</span>
+    <div class="post__header">
+      <span class="post__type ${typeClass}">${typeLabel}</span>
+      ${responseBadge}
+    </div>
     <div class="post__text">${escapeHtml(post.text)}</div>
     <div class="post__time">${timeAgo}</div>
     <div class="post__actions">
       <button class="post__action-btn" onclick="handlePrayed('${post.id}')">
-        Prayed for you (${post.prayedCount || 0})
+        🙏 Prayed for you (${post.prayedCount || 0})
       </button>
       <button class="post__action-btn" onclick="handleReport('${post.id}')">
-        Report
+        Flag
       </button>
     </div>
   `;
@@ -162,47 +170,58 @@ function createPostElement(post) {
   return div;
 }
 
-async function handlePrayed(postId) {
-  try {
-    await db.collection('posts').doc(postId).update({
-      prayedCount: firebase.firestore.FieldValue.increment(1)
-    });
-    await refreshFeed();
-  } catch (error) {
-    console.error('Error incrementing prayed count:', error);
+function handlePrayed(postId) {
+  const post = allPosts.find(p => p.id === postId);
+  if (post) {
+    post.prayedCount = (post.prayedCount || 0) + 1;
+    renderFeed();
   }
 }
 
-async function handleReport(postId) {
-  try {
-    const postRef = db.collection('posts').doc(postId);
-    const post = await postRef.get();
-    const newReportCount = (post.data().reportCount || 0) + 1;
+function handleReport(postId) {
+  const post = allPosts.find(p => p.id === postId);
+  if (post) {
+    post.reportCount = (post.reportCount || 0) + 1;
     
-    if (newReportCount >= 5) {
-      await postRef.update({
-        reportCount: newReportCount,
-        isHidden: true
-      });
-    } else {
-      await postRef.update({
-        reportCount: newReportCount
-      });
+    if (post.reportCount >= 5) {
+      post.isHidden = true;
     }
     
-    await refreshFeed();
-  } catch (error) {
-    console.error('Error reporting post:', error);
+    renderFeed();
   }
+}
+
+// Success notification for user's post
+function showSuccessNotification(response) {
+  const notification = document.createElement('div');
+  notification.className = 'notification notification--success';
+  notification.innerHTML = `
+    <div class="notification__content">
+      <h4>Your post was shared!</h4>
+      <p class="notification__response">"${response}"</p>
+      <small>This is one of many responses from our community.</small>
+    </div>
+  `;
+  document.body.appendChild(notification);
+  
+  setTimeout(() => {
+    notification.classList.add('notification--show');
+  }, 10);
+  
+  setTimeout(() => {
+    notification.classList.remove('notification--show');
+    setTimeout(() => notification.remove(), 300);
+  }, 5000);
 }
 
 // Utility functions
-function getTimeAgo(timestamp) {
-  if (!timestamp) return 'just now';
-  
+function generateId() {
+  return 'post_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+}
+
+function getTimeAgo(date) {
   const now = new Date();
-  const postTime = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
-  const diffMs = now - postTime;
+  const diffMs = now - date;
   const diffMins = Math.floor(diffMs / 60000);
   const diffHours = Math.floor(diffMs / 3600000);
   const diffDays = Math.floor(diffMs / 86400000);
@@ -225,9 +244,8 @@ function showLoading(show) {
 
 // Initialize app
 function initializeApp() {
-  console.log('App initialized');
   updatePlaceholder();
-  refreshFeed();
+  renderFeed();
 }
 
 // Run on page load

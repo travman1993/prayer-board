@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Lifted - Anonymous Prayer & Confession Board</title>
+  <link rel="stylesheet" href="./src/styles.css">
+  <style>
+    .page-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+    .page-content h1 {
+      font-size: 40px;
+      color: #2d5f8d;
+      margin-bottom: 24px;
+    }
+    .page-content p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #555;
+      margin-bottom: 24px;
+    }
+    .contact-form {
+      background: white;
+      padding: 40px;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      margin: 40px 0;
+    }
+    .form-group {
+      margin-bottom: 24px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 14px;
+    }
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #2d5f8d;
+      box-shadow: 0 0 0 3px rgba(45, 95, 141, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="navbar__container">
+      <div class="navbar__logo">
+        <h2>Lifted</h2>
+      </div>
+      <ul class="navbar__menu">
+        <li><a href="./index.html" class="navbar__link">Home</a></li>
+        <li><a href="./about.html" class="navbar__link">About</a></li>
+        <li><a href="./contact.html" class="navbar__link navbar__link--active">Contact</a></li>
+        <li><a href="./terms.html" class="navbar__link">Terms</a></li>
+        <li><a href="./privacy.html" class="navbar__link">Privacy</a></li>
+        <li><a href="./cookies.html" class="navbar__link">Cookies</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-content">
+    <h1>Contact Us</h1>
+    
+    <p>
+      Have feedback about Lifted? Want to report a bug or suggest a feature? We'd love to hear from you! Send us a message and we'll get back to you as soon as we can.
+    </p>
+
+    <div class="contact-form">
+      <form id="contact-form">
+        <div class="form-group">
+          <label for="name">Name (Optional)</label>
+          <input type="text" id="name" name="name" placeholder="Your name">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email (Optional)</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com">
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="What is this about?" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us what's on your mind..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn--primary">Send Message</button>
+      </form>
+    </div>
+
+    <h2>Other Ways to Reach Us</h2>
+    <p>
+      Email us at: <strong>hello@lifted.community</strong>
+    </p>
+    <p>
+      We review all messages and will respond within 48 hours.
+    </p>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__content">
+      <div class="footer__section">
+        <h4>Lifted</h4>
+        <p>Anonymous prayer and confession community.</p>
+      </div>
+      <div class="footer__section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="./about.html">About Us</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+          <li><a href="./terms.html">Terms of Service</a></li>
+          <li><a href="./privacy.html">Privacy Policy</a></li>
+          <li><a href="./cookies.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer__section">
+        <h4>Follow</h4>
+        <p>© 2025 Lifted. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for your message! We will review it shortly.');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
