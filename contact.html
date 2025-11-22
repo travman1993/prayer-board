@@ -3,152 +3,124 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Lifted - Anonymous Prayer & Confession Board</title>
-  <link rel="stylesheet" href="./src/styles.css">
-  <style>
-    .page-content {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 60px 24px;
-    }
-    .page-content h1 {
-      font-size: 40px;
-      color: #2d5f8d;
-      margin-bottom: 24px;
-    }
-    .page-content p {
-      font-size: 16px;
-      line-height: 1.8;
-      color: #555;
-      margin-bottom: 24px;
-    }
-    .contact-form {
-      background: white;
-      padding: 40px;
-      border-radius: 8px;
-      border: 1px solid #e0e0e0;
-      margin: 40px 0;
-    }
-    .form-group {
-      margin-bottom: 24px;
-    }
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-      color: #333;
-    }
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 6px;
-      font-family: inherit;
-      font-size: 14px;
-    }
-    .form-group textarea {
-      min-height: 150px;
-      resize: vertical;
-    }
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: #2d5f8d;
-      box-shadow: 0 0 0 3px rgba(45, 95, 141, 0.1);
-    }
-  </style>
+  <title>Contact - Lifted</title>
+  <link rel="stylesheet" href="./src/global.css">
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="navbar__container">
-      <div class="navbar__logo">
-        <h2>Lifted</h2>
+  <div class="page-container">
+    <header class="header">
+      <h1 class="header__title">Lifted</h1>
+      <p class="header__subtitle">Share a prayer. Lift up a stranger.</p>
+      <nav class="header__nav">
+        <a href="./" class="header__back-link">← Back to Home</a>
+      </nav>
+    </header>
+
+    <!-- Ad Spot 3: Below Form -->
+    <div class="ad-container ad-container--below-form">
+      <div class="ad-slot">
+        <div class="ad-placeholder">Advertisement</div>
       </div>
-      <ul class="navbar__menu">
-        <li><a href="./index.html" class="navbar__link">Home</a></li>
-        <li><a href="./about.html" class="navbar__link">About</a></li>
-        <li><a href="./contact.html" class="navbar__link navbar__link--active">Contact</a></li>
-        <li><a href="./terms.html" class="navbar__link">Terms</a></li>
-        <li><a href="./privacy.html" class="navbar__link">Privacy</a></li>
-        <li><a href="./cookies.html" class="navbar__link">Cookies</a></li>
+    </div>
+
+    <main class="page-content">
+      <h1>Contact Us</h1>
+      
+      <p>Have a question, suggestion, or concern about Lifted? We'd love to hear from you!</p>
+
+      <h2>Get In Touch</h2>
+      <p>Send us an email with your message:</p>
+
+      <div class="highlight">
+        <p><strong>Email:</strong> <a href="mailto:support@lifted-app.com">support@lifted-app.com</a></p>
+      </div>
+
+      <h2>What We'd Like to Hear</h2>
+      <ul>
+        <li><strong>Questions:</strong> Any question about how Lifted works</li>
+        <li><strong>Feedback:</strong> Ideas to make Lifted better</li>
+        <li><strong>Bug Reports:</strong> Technical issues you've encountered</li>
+        <li><strong>Suggestions:</strong> Features or improvements you'd like to see</li>
+        <li><strong>Concerns:</strong> Report inappropriate content or community violations</li>
       </ul>
+
+      <h2>Reporting Abuse</h2>
+      <p>If you see a post or comment that violates our community guidelines, you can:</p>
+      <ul>
+        <li><strong>Use the Report button:</strong> Click "Report" on any post or comment in Lifted</li>
+        <li><strong>Email us:</strong> Send details to <a href="mailto:support@lifted-app.com">support@lifted-app.com</a></li>
+      </ul>
+
+      <p>Our community team reviews all reports and takes action to keep Lifted a safe space.</p>
+
+      <h2>Response Time</h2>
+      <p>We aim to respond to all inquiries within 48 hours. However, response times may vary depending on the volume of messages and the complexity of your question.</p>
+
+      <h2>Community Guidelines Violations</h2>
+      <p>For serious violations of our <a href="./terms.html">Terms of Service</a> or community guidelines, you can:</p>
+      <ul>
+        <li>Use the Report button on the post</li>
+        <li>Email us with specific details and screenshots if possible</li>
+      </ul>
+
+      <h2>Staying Safe on Lifted</h2>
+      <p>Remember:</p>
+      <ul>
+        <li>Lifted is anonymous - don't share personal information</li>
+        <li>Be kind and respectful to others</li>
+        <li>If something feels unsafe, report it</li>
+        <li>Posts are visible to everyone - assume they're public</li>
+      </ul>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>Can I delete my posts?</h3>
+      <p>Posts are stored on your device. To delete them, clear your browser's local storage. Visit our <a href="./cookies.html">Cookie Policy</a> for instructions.</p>
+
+      <h3>How long do posts stay on Lifted?</h3>
+      <p>Posts automatically disappear from the feed after 7 days. This helps keep the community fresh and protects privacy.</p>
+
+      <h3>What if I post by mistake?</h3>
+      <p>Clear your browser's localStorage to remove your posts. See our <a href="./cookies.html">Cookie Policy</a> for step-by-step instructions.</p>
+
+      <h3>Is my data safe?</h3>
+      <p>Yes! Lifted stores all data locally on YOUR device. We don't have servers storing your personal information. Read our <a href="./privacy.html">Privacy Policy</a> for details.</p>
+
+      <h3>Can you identify me from my post?</h3>
+      <p>No. Lifted is completely anonymous. We don't collect names, emails, or any identifying information.</p>
+
+      <h2>Other Ways to Connect</h2>
+      <p>While our primary contact method is email, you can also find us through:</p>
+      <ul>
+        <li><strong>Main Website:</strong> Check our <a href="./about.html">About page</a> for more information</li>
+        <li><strong>Community:</strong> The Lifted community itself is a great place to find support</li>
+      </ul>
+
+      <div class="highlight">
+        <p><strong>Thank you for being part of the Lifted community!</strong> Your feedback helps us create a better, safer space for prayer and connection.</p>
+      </div>
+    </main>
+
+    <!-- Ad Spot 3: Below Form -->
+    <div class="ad-container ad-container--below-form">
+      <div class="ad-slot">
+        <div class="ad-placeholder">Advertisement</div>
+      </div>
     </div>
-  </nav>
 
-  <div class="page-content">
-    <h1>Contact Us</h1>
-    
-    <p>
-      Have feedback about Lifted? Want to report a bug or suggest a feature? We'd love to hear from you! Send us a message and we'll get back to you as soon as we can.
-    </p>
-
-    <div class="contact-form">
-      <form id="contact-form">
-        <div class="form-group">
-          <label for="name">Name (Optional)</label>
-          <input type="text" id="name" name="name" placeholder="Your name">
-        </div>
-
-        <div class="form-group">
-          <label for="email">Email (Optional)</label>
-          <input type="email" id="email" name="email" placeholder="your@email.com">
-        </div>
-
-        <div class="form-group">
-          <label for="subject">Subject</label>
-          <input type="text" id="subject" name="subject" placeholder="What is this about?" required>
-        </div>
-
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Tell us what's on your mind..." required></textarea>
-        </div>
-
-        <button type="submit" class="btn btn--primary">Send Message</button>
-      </form>
-    </div>
-
-    <h2>Other Ways to Reach Us</h2>
-    <p>
-      Email us at: <strong>hello@lifted.community</strong>
-    </p>
-    <p>
-      We review all messages and will respond within 48 hours.
-    </p>
+    <footer class="footer">
+      <div class="footer__content">
+        <nav class="footer__nav">
+          <a href="./" class="footer__link">Home</a>
+          <a href="./about.html" class="footer__link">About</a>
+          <a href="./privacy.html" class="footer__link">Privacy Policy</a>
+          <a href="./cookies.html" class="footer__link">Cookie Policy</a>
+          <a href="./contact.html" class="footer__link">Contact</a>
+          <a href="./terms.html" class="footer__link">Terms of Service</a>
+        </nav>
+        <p class="footer__copyright">&copy; 2025 Lifted. All rights reserved.</p>
+      </div>
+    </footer>
   </div>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer__content">
-      <div class="footer__section">
-        <h4>Lifted</h4>
-        <p>Anonymous prayer and confession community.</p>
-      </div>
-      <div class="footer__section">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="./about.html">About Us</a></li>
-          <li><a href="./contact.html">Contact</a></li>
-          <li><a href="./terms.html">Terms of Service</a></li>
-          <li><a href="./privacy.html">Privacy Policy</a></li>
-          <li><a href="./cookies.html">Cookie Policy</a></li>
-        </ul>
-      </div>
-      <div class="footer__section">
-        <h4>Follow</h4>
-        <p>© 2025 Lifted. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Thank you for your message! We will review it shortly.');
-      this.reset();
-    });
-  </script>
 </body>
 </html>

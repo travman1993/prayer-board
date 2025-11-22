@@ -4,130 +4,125 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy - Lifted</title>
-  <link rel="stylesheet" href="./src/styles.css">
-  <style>
-    .page-content {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 60px 24px;
-    }
-    .page-content h1 {
-      font-size: 40px;
-      color: #2d5f8d;
-      margin-bottom: 24px;
-    }
-    .page-content h2 {
-      font-size: 24px;
-      color: #2d5f8d;
-      margin-top: 40px;
-      margin-bottom: 16px;
-    }
-    .page-content p {
-      font-size: 16px;
-      line-height: 1.8;
-      color: #555;
-      margin-bottom: 16px;
-    }
-    .page-content ul {
-      margin: 20px 0 20px 20px;
-      font-size: 16px;
-    }
-    .page-content li {
-      margin-bottom: 12px;
-      color: #555;
-    }
-    .last-updated {
-      color: #999;
-      font-size: 14px;
-      margin-bottom: 40px;
-    }
-  </style>
+  <link rel="stylesheet" href="./src/global.css">
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="navbar__container">
-      <div class="navbar__logo">
-        <h2>Lifted</h2>
+  <div class="page-container">
+    <header class="header">
+      <h1 class="header__title">Lifted</h1>
+      <p class="header__subtitle">Share a prayer. Lift up a stranger.</p>
+      <nav class="header__nav">
+        <a href="./" class="header__back-link">← Back to Home</a>
+      </nav>
+    </header>
+
+    <!-- Ad Spot 3: Below Form -->
+    <div class="ad-container ad-container--below-form">
+      <div class="ad-slot">
+        <div class="ad-placeholder">Advertisement</div>
       </div>
-      <ul class="navbar__menu">
-        <li><a href="./index.html" class="navbar__link">Home</a></li>
-        <li><a href="./about.html" class="navbar__link">About</a></li>
-        <li><a href="./contact.html" class="navbar__link">Contact</a></li>
-        <li><a href="./terms.html" class="navbar__link">Terms</a></li>
-        <li><a href="./privacy.html" class="navbar__link navbar__link--active">Privacy</a></li>
-        <li><a href="./cookies.html" class="navbar__link">Cookies</a></li>
+    </div>
+
+    <main class="page-content">
+      <h1>Privacy Policy</h1>
+      
+      <p><strong>Last Updated: January 2025</strong></p>
+
+      <h2>1. Introduction</h2>
+      <p>Lifted ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we handle information when you use our website and services.</p>
+
+      <h2>2. We Do Not Collect Personal Data</h2>
+      <div class="highlight">
+        <p><strong>This is core to who we are.</strong> Lifted is designed to be completely anonymous. We do NOT:</p>
+      </div>
+
+      <ul>
+        <li>Require registration or account creation</li>
+        <li>Collect email addresses</li>
+        <li>Collect phone numbers</li>
+        <li>Collect names or identifiable information</li>
+        <li>Track your identity or location</li>
+        <li>Store IP addresses to identify you</li>
+        <li>Use cookies to track individual users</li>
+        <li>Sell or share user data</li>
       </ul>
+
+      <h2>3. What We Store</h2>
+      <p>All data is stored locally in your browser using localStorage. This means:</p>
+      <ul>
+        <li>Your posts are stored on YOUR device only</li>
+        <li>No server or database stores your personal information</li>
+        <li>Other users see posts in a shared feed, but cannot identify you</li>
+        <li>If you clear your browser cache, your data is deleted</li>
+      </ul>
+
+      <h2>4. Posts and Confessions</h2>
+      <p>When you submit a post:</p>
+      <ul>
+        <li>It is saved to your device's local storage</li>
+        <li>It appears in the shared feed (visible to other visitors)</li>
+        <li>No identifying information is attached to it</li>
+        <li>Other users cannot contact or trace you</li>
+        <li>Posts automatically expire after 7 days</li>
+      </ul>
+
+      <h2>5. Third-Party Services</h2>
+      <p>Lifted may display advertisements from third-party ad networks (e.g., Google AdSense). These services may use cookies and tracking technology in accordance with their own privacy policies. We are not responsible for their practices.</p>
+
+      <h2>6. Browser Data</h2>
+      <p>We may use standard browser data like:</p>
+      <ul>
+        <li>User-Agent headers (to optimize display)</li>
+        <li>Referrer information (to understand traffic sources)</li>
+      </ul>
+      <p>This data is not used to identify you personally.</p>
+
+      <h2>7. Security</h2>
+      <p>Since all data is stored locally on your device, there is minimal risk of data breaches on our servers. However, your device's security is your responsibility. We recommend:</p>
+      <ul>
+        <li>Using a secure, updated browser</li>
+        <li>Keeping your device software up to date</li>
+        <li>Using strong passwords for your device accounts</li>
+      </ul>
+
+      <h2>8. Children's Privacy</h2>
+      <p>Lifted is not intended for users under 13. We do not knowingly collect information from children under 13. If we learn that a child under 13 has submitted personal information, we will delete it.</p>
+
+      <h2>9. Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. We will notify users of material changes by updating the "Last Updated" date on this page. Your continued use of Lifted constitutes acceptance of our updated policies.</p>
+
+      <h2>10. Contact Us</h2>
+      <p>If you have questions about our privacy practices, please <a href="./contact.html">contact us</a>.</p>
+
+      <h2>11. Compliance</h2>
+      <p>Lifted is designed to comply with:</p>
+      <ul>
+        <li><strong>GDPR (General Data Protection Regulation):</strong> Since we collect no personal data, GDPR requirements are minimized.</li>
+        <li><strong>CCPA (California Consumer Privacy Act):</strong> We do not sell personal information, so CCPA obligations are not applicable.</li>
+        <li><strong>Other Privacy Laws:</strong> We comply with applicable privacy laws in jurisdictions where we operate.</li>
+      </ul>
+    </main>
+
+    <!-- Ad Spot 3: Below Form -->
+    <div class="ad-container ad-container--below-form">
+      <div class="ad-slot">
+        <div class="ad-placeholder">Advertisement</div>
+      </div>
     </div>
-  </nav>
 
-  <div class="page-content">
-    <h1>Privacy Policy</h1>
-    <p class="last-updated">Last Updated: January 2025</p>
-
-    <h2>Our Privacy Commitment</h2>
-    <p>Your privacy is important to us. Lifted is completely anonymous—we don't collect personal information, and we don't track individual users.</p>
-
-    <h2>What We DON'T Collect</h2>
-    <ul>
-      <li>Email addresses or names</li>
-      <li>IP addresses or device identifiers</li>
-      <li>Location data</li>
-      <li>Demographic information</li>
-    </ul>
-
-    <h2>What We DO Collect</h2>
-    <p>When you post to Lifted, we store only:</p>
-    <ul>
-      <li>Your text content (anonymously)</li>
-      <li>Interaction counts (prayed, reported)</li>
-    </ul>
-    <p>This information is stored temporarily in your browser only and does not persist across page refreshes.</p>
-
-    <h2>Data Security</h2>
-    <p>All data is stored locally in your browser. We do not send your posts to any server or external service. Your content is yours alone.</p>
-
-    <h2>Third-Party Services</h2>
-    <p>Lifted does not use any third-party analytics, tracking, or data collection services.</p>
-
-    <h2>Cookies</h2>
-    <p>We use one local storage item (lifted-onboarded) to remember if you've seen our onboarding message. This is stored only on your device.</p>
-
-    <h2>Children's Privacy</h2>
-    <p>Lifted is not intended for users under 13. We do not knowingly collect information from children under 13.</p>
-
-    <h2>Your Rights</h2>
-    <p>Your posts are stored only in your browser. You can clear your browser data at any time to delete all posts.</p>
-
-    <h2>Changes to This Policy</h2>
-    <p>We may update this Privacy Policy from time to time. The "Last Updated" date at the top shows when this policy was last revised.</p>
-
-    <h2>Contact</h2>
-    <p>If you have questions about this Privacy Policy, please <a href="./contact.html">contact us</a>.</p>
+    <footer class="footer">
+      <div class="footer__content">
+        <nav class="footer__nav">
+          <a href="./" class="footer__link">Home</a>
+          <a href="./about.html" class="footer__link">About</a>
+          <a href="./privacy.html" class="footer__link">Privacy Policy</a>
+          <a href="./cookies.html" class="footer__link">Cookie Policy</a>
+          <a href="./contact.html" class="footer__link">Contact</a>
+          <a href="./terms.html" class="footer__link">Terms of Service</a>
+        </nav>
+        <p class="footer__copyright">&copy; 2025 Lifted. All rights reserved.</p>
+      </div>
+    </footer>
   </div>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer__content">
-      <div class="footer__section">
-        <h4>Lifted</h4>
-        <p>Anonymous prayer and confession community.</p>
-      </div>
-      <div class="footer__section">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="./about.html">About Us</a></li>
-          <li><a href="./contact.html">Contact</a></li>
-          <li><a href="./terms.html">Terms of Service</a></li>
-          <li><a href="./privacy.html">Privacy Policy</a></li>
-          <li><a href="./cookies.html">Cookie Policy</a></li>
-        </ul>
-      </div>
-      <div class="footer__section">
-        <h4>Follow</h4>
-        <p>© 2025 Lifted. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
 </body>
 </html>
