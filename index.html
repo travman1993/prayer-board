@@ -3,28 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lifted - Anonymous Prayer & Confession Board</title>
+  <title>Lifted - Anonymous Prayer Board</title>
   <link rel="stylesheet" href="./src/styles.css">
-  <link rel="icon" type="image/x-icon" href="./public/favicon.ico">
 </head>
 <body>
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="navbar__container">
-      <div class="navbar__logo">
-        <h2>Lifted</h2>
-      </div>
-      <ul class="navbar__menu">
-        <li><a href="./index.html" class="navbar__link navbar__link--active">Home</a></li>
-        <li><a href="./about.html" class="navbar__link">About</a></li>
-        <li><a href="./contact.html" class="navbar__link">Contact</a></li>
-        <li><a href="./terms.html" class="navbar__link">Terms</a></li>
-        <li><a href="./privacy.html" class="navbar__link">Privacy</a></li>
-        <li><a href="./cookies.html" class="navbar__link">Cookies</a></li>
-      </ul>
-    </div>
-  </nav>
-
   <!-- Onboarding Modal -->
   <div id="onboarding-modal" class="modal modal--active">
     <div class="modal__overlay"></div>
@@ -38,8 +20,8 @@
             <li>Be respectful and kind</li>
             <li>No hate speech, threats, or explicit content</li>
             <li>No spam or scams</li>
-            <li>We do not collect personal data</li>
-            <li>Posts refresh each time you visit</li>
+            <li>Posts are stored locally on your device</li>
+            <li>Be authentic and vulnerable</li>
           </ul>
         </div>
         <button id="onboarding-btn" class="btn btn--primary">I Understand - Enter</button>
@@ -47,133 +29,69 @@
     </div>
   </div>
 
-  <!-- Main App -->
-  <div id="app-wrapper">
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero__content">
-        <h1 class="hero__title">Find Strength in Community</h1>
-        <p class="hero__subtitle">Share what's on your heart. Lift up others. Find peace in anonymity.</p>
-        <div class="hero__benefits">
-          <div class="benefit">
-            <span class="benefit__icon">🙏</span>
-            <h3>Anonymous Prayer</h3>
-            <p>Share your deepest concerns without fear of judgment</p>
-          </div>
-          <div class="benefit">
-            <span class="benefit__icon">❤️</span>
-            <h3>Honest Confessions</h3>
-            <p>Lighten your heart by sharing what weighs on you</p>
-          </div>
-          <div class="benefit">
-            <span class="benefit__icon">👥</span>
-            <h3>Community Support</h3>
-            <p>Get encouragement and prayers from others</p>
-          </div>
-        </div>
+    <header class="header">
+      <div class="header__content">
+        <h1 class="header__title">Lifted</h1>
+        <p class="header__subtitle">Share a prayer. Lift up a stranger.</p>
       </div>
-    </section>
+    </header>
 
-    <!-- Ad Placement 1: Top of Page -->
-    <div class="ad-placement ad-placement--1">
-      <p class="ad-placeholder">Advertisement</p>
+    <!-- Ad Spot 2: Below Header -->
+    <div class="ad-container ad-container--below-header">
+      <div class="ad-slot" id="ad-below-header">
+        <div class="ad-placeholder">Advertisement</div>
+      </div>
     </div>
 
-    <!-- Main App Container -->
-    <div class="app-container">
-      <header class="header">
-        <div class="header__content">
-          <h2 class="header__title">Lifted</h2>
-          <p class="header__subtitle">Share a prayer. Lift up a stranger.</p>
-        </div>
-      </header>
+    <nav class="tabs">
+      <button id="tab-prayer" class="tab tab--active" data-tab="prayer">Prayer Requests</button>
+      <button id="tab-confession" class="tab" data-tab="confession">Confessions</button>
+    </nav>
 
-      <!-- Tabs -->
-      <nav class="tabs">
-        <button id="tab-prayer" class="tab tab--active" data-tab="prayer">Prayer Requests</button>
-        <button id="tab-confession" class="tab" data-tab="confession">Confessions</button>
-      </nav>
-
-      <!-- Post Form -->
-      <section class="post-form">
+    <section class="post-form">
+      <div class="post-form__input-group">
         <textarea id="post-textarea" class="post-form__textarea" placeholder="What would you like prayer for today?" maxlength="1000"></textarea>
         <div class="post-form__footer">
           <span id="char-count" class="post-form__char-count">0 / 1000</span>
           <button id="post-btn" class="btn btn--primary">Post Anonymously</button>
         </div>
-      </section>
-
-      <!-- Ad Placement 2: Sidebar Right (Desktop Only) -->
-      <div class="ad-placement ad-placement--2">
-        <p class="ad-placeholder">Advertisement</p>
-      </div>
-
-      <!-- Feed -->
-      <section class="feed">
-        <div id="feed-empty" class="feed__empty"><p>No posts yet. Be the first to share.</p></div>
-        <div id="feed-list" class="feed__list"></div>
-      </section>
-
-      <!-- Ad Placement 3: Between Feed Items -->
-      <div class="ad-placement ad-placement--3">
-        <p class="ad-placeholder">Advertisement</p>
-      </div>
-    </div>
-
-    <!-- Ad Placement 4: After Feed -->
-    <div class="ad-placement ad-placement--4">
-      <p class="ad-placeholder">Advertisement</p>
-    </div>
-
-    <!-- Health & Fitness Cross-Promotion (FitIQ Hub) -->
-    <section class="health-promo">
-      <div class="health-promo__content">
-        <div class="health-promo__text">
-          <h3>Strengthen Your Body & Mind</h3>
-          <p>Praying and confessing is good for your soul, but your body needs care too. Explore free fitness tools and health articles to support your wellness journey.</p>
-          <a href="https://fitiqhub.com" target="_blank" rel="noopener noreferrer" class="btn btn--secondary">Visit FitIQ Hub</a>
-        </div>
-        <div class="health-promo__image">
-          <div class="health-promo__icon">💪</div>
-        </div>
       </div>
     </section>
 
-    <!-- Ad Placement 5: Before Footer -->
-    <div class="ad-placement ad-placement--5">
-      <p class="ad-placeholder">Advertisement</p>
+    <!-- Ad Spot 3: Below Post Form -->
+    <div class="ad-container ad-container--below-form">
+      <div class="ad-slot" id="ad-below-form">
+        <div class="ad-placeholder">Advertisement</div>
+      </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
       <div class="footer__content">
-        <div class="footer__section">
-          <h4>Lifted</h4>
-          <p>Anonymous prayer and confession community.</p>
-        </div>
-        <div class="footer__section">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="./about.html">About Us</a></li>
-            <li><a href="./contact.html">Contact</a></li>
-            <li><a href="./terms.html">Terms of Service</a></li>
-            <li><a href="./privacy.html">Privacy Policy</a></li>
-            <li><a href="./cookies.html">Cookie Policy</a></li>
-          </ul>
-        </div>
-        <div class="footer__section">
-          <h4>Follow</h4>
-          <p>© 2025 Lifted. All rights reserved.</p>
-        </div>
+        <nav class="footer__nav">
+          <a href="#" id="footer-about" class="footer__link">About</a>
+          <a href="#" id="footer-privacy" class="footer__link">Privacy Policy</a>
+          <a href="#" id="footer-cookies" class="footer__link">Cookie Policy</a>
+          <a href="#" id="footer-contact" class="footer__link">Contact</a>
+        </nav>
+        <p class="footer__copyright">&copy; 2025 Lifted. All rights reserved.</p>
       </div>
     </footer>
+
+    <div id="loading" class="loading" style="display: none;"><div class="loading__spinner"></div></div>
   </div>
 
-  <!-- Loading Spinner -->
-  <div id="loading" class="loading" style="display: none;"><div class="loading__spinner"></div></div>
+  <!-- Modal for About/Privacy/Cookies -->
+  <div id="info-modal" class="modal">
+    <div class="modal__overlay"></div>
+    <div class="modal__content modal__content--info">
+      <div class="modal__close-btn" id="modal-close-btn">&times;</div>
+      <div class="modal__inner" id="modal-content">
+        <!-- Content loaded dynamically -->
+      </div>
+    </div>
+  </div>
 
-  <!-- App Scripts -->
-  <script src="./src/responses.js"></script>
   <script src="./src/app.js"></script>
+  <script src="./src/responses.js"></script>
 </body>
 </html>
