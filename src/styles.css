@@ -51,17 +51,9 @@ body {
   overflow-y: auto;
 }
 
-.modal__content--info {
-  max-width: 600px;
-}
-
 .modal__inner {
   padding: 40px 24px;
   text-align: center;
-}
-
-.modal__content--info .modal__inner {
-  text-align: left;
 }
 
 .modal__title {
@@ -110,48 +102,6 @@ body {
   left: 0;
 }
 
-.modal__close-btn {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  font-size: 28px;
-  cursor: pointer;
-  color: #999;
-  font-weight: 300;
-  transition: color 0.2s ease;
-  z-index: 1002;
-}
-
-.modal__close-btn:hover {
-  color: #333;
-}
-
-.modal__content--info h2 {
-  color: #2d5f8d;
-  margin-bottom: 16px;
-  margin-top: 20px;
-}
-
-.modal__content--info h2:first-child {
-  margin-top: 0;
-}
-
-.modal__content--info p {
-  margin-bottom: 14px;
-  line-height: 1.7;
-  font-size: 14px;
-}
-
-.modal__content--info ul {
-  margin-left: 20px;
-  margin-bottom: 14px;
-}
-
-.modal__content--info li {
-  font-size: 14px;
-  margin-bottom: 8px;
-}
-
 /* ===== BUTTONS ===== */
 .btn {
   padding: 12px 24px;
@@ -162,6 +112,8 @@ body {
   cursor: pointer;
   transition: all 0.2s ease;
   font-family: inherit;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .btn--primary {
@@ -180,21 +132,16 @@ body {
   transform: translateY(0);
 }
 
-.btn--secondary {
-  background: #f5f5f5;
-  color: #333;
-  border: 1px solid #ddd;
-  width: auto;
+.btn--fitiq {
+  background: #4CAF50;
+  color: white;
+  width: 100%;
 }
 
-.btn--secondary:hover {
-  background: #efefef;
-}
-
-.btn--small {
-  padding: 8px 14px;
-  font-size: 12px;
-  width: auto;
+.btn--fitiq:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.25);
 }
 
 /* ===== AD CONTAINERS ===== */
@@ -211,22 +158,6 @@ body {
   padding: 12px 0;
   border-top: 1px solid #e0e0e0;
   border-bottom: 1px solid #e0e0e0;
-}
-
-.ad-container--below-header {
-  margin: 16px 0;
-}
-
-.ad-container--below-form {
-  margin: 16px 0;
-}
-
-.ad-container--feed-mid {
-  margin: 24px 0;
-}
-
-.ad-container--feed-bottom {
-  margin: 24px 0 40px;
 }
 
 .ad-slot {
@@ -268,7 +199,7 @@ body {
   color: white;
   padding: 40px 24px 32px;
   text-align: center;
-  margin: 0 -16px 32px;
+  margin: 0 -16px 24px;
 }
 
 .header__title {
@@ -280,6 +211,59 @@ body {
 .header__subtitle {
   font-size: 16px;
   opacity: 0.95;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  background: white;
+  padding: 40px 24px;
+  border-radius: 8px;
+  margin-bottom: 32px;
+  border: 1px solid #e0e0e0;
+}
+
+.hero__content {
+  max-width: 100%;
+}
+
+.hero__title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2d5f8d;
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.hero__benefits {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 600px) {
+  .hero__benefits {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.hero__benefit {
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  border-left: 4px solid #2d5f8d;
+}
+
+.hero__benefit-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2d5f8d;
+  margin-bottom: 8px;
+}
+
+.hero__benefit-text {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
 }
 
 /* ===== TABS ===== */
@@ -318,11 +302,6 @@ body {
   border: 1px solid #e0e0e0;
 }
 
-.post-form__input-group {
-  display: flex;
-  flex-direction: column;
-}
-
 .post-form__textarea {
   width: 100%;
   min-height: 120px;
@@ -351,6 +330,38 @@ body {
 .post-form__char-count {
   font-size: 12px;
   color: #999;
+}
+
+/* ===== RESPONSE BOX ===== */
+.response-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.response-box__content {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 400px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.response-box__text {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2d5f8d;
+  margin-bottom: 30px;
+  line-height: 1.6;
 }
 
 /* ===== FEED ===== */
@@ -417,151 +428,54 @@ body {
 .post__time {
   font-size: 12px;
   color: #999;
-  margin-bottom: 14px;
 }
 
-.post__actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
+/* ===== FITIQHUB PROMOTION ===== */
+.fitiq-promo {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  padding: 40px 24px;
+  border-radius: 8px;
+  margin: 40px 0;
+  color: white;
 }
 
-.post__action-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 12px;
-  background: #f5f5f5;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 12px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-family: inherit;
-  white-space: nowrap;
+.fitiq-promo__content {
+  max-width: 100%;
 }
 
-.post__action-btn:hover {
-  background: #efefef;
-  border-color: #bbb;
-}
-
-/* ===== COMMENT SECTION ===== */
-.post__comment-section {
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 1px solid #f0f0f0;
-}
-
-.post__comment-prompt {
-  background: #f9f9f9;
-  padding: 14px;
-  border-radius: 6px;
-  margin-bottom: 16px;
-}
-
-.post__comment-prompt p {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 10px;
-  font-style: italic;
-}
-
-.post__comment-prompt-actions {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.post__custom-comment {
-  margin-bottom: 16px;
-}
-
-.post__comment-textarea {
-  width: 100%;
-  min-height: 80px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  font-size: 13px;
-  font-family: inherit;
-  resize: none;
+.fitiq-promo__title {
+  font-size: 28px;
+  font-weight: 700;
   margin-bottom: 8px;
-}
-
-.post__comment-textarea:focus {
-  outline: none;
-  border-color: #2d5f8d;
-  box-shadow: 0 0 0 3px rgba(45, 95, 141, 0.1);
-}
-
-.post__comment-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 12px;
-}
-
-.post__comment-count {
-  color: #999;
-}
-
-.post__comments-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 16px;
-}
-
-.post__comment {
-  background: #f9f9f9;
-  padding: 12px;
-  border-radius: 6px;
-  border-left: 3px solid #2d5f8d;
-}
-
-.post__comment-body {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.post__comment-text {
-  font-size: 13px;
-  color: #333;
-  line-height: 1.5;
-}
-
-.post__comment-meta {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  font-size: 11px;
-}
-
-.post__comment-time {
-  color: #999;
-}
-
-.post__comment-report {
-  background: none;
-  border: none;
-  color: #d32f2f;
-  cursor: pointer;
-  font-size: 11px;
-  padding: 0;
-  transition: color 0.2s ease;
-}
-
-.post__comment-report:hover {
-  color: #b71c1c;
-}
-
-.post__no-comments {
-  font-size: 12px;
-  color: #999;
   text-align: center;
-  padding: 16px 0;
+}
+
+.fitiq-promo__subtitle {
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 24px;
+  opacity: 0.95;
+}
+
+.fitiq-promo__box {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 24px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.fitiq-promo__heading {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: white;
+}
+
+.fitiq-promo__description {
+  font-size: 14px;
+  margin-bottom: 16px;
+  line-height: 1.6;
+  opacity: 0.95;
 }
 
 /* ===== FOOTER ===== */
@@ -645,6 +559,27 @@ body {
     font-size: 14px;
   }
 
+  .hero {
+    padding: 24px;
+  }
+
+  .hero__title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .hero__benefit {
+    padding: 16px;
+  }
+
+  .hero__benefit-title {
+    font-size: 14px;
+  }
+
+  .hero__benefit-text {
+    font-size: 13px;
+  }
+
   .modal__inner {
     padding: 32px 20px;
   }
@@ -666,13 +601,30 @@ body {
     font-size: 13px;
   }
 
-  .post__actions {
-    gap: 8px;
+  .response-box__content {
+    padding: 30px 20px;
   }
 
-  .post__action-btn {
-    padding: 6px 10px;
-    font-size: 11px;
+  .response-box__text {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .fitiq-promo {
+    padding: 30px 20px;
+    margin: 30px 0;
+  }
+
+  .fitiq-promo__title {
+    font-size: 22px;
+  }
+
+  .fitiq-promo__subtitle {
+    font-size: 14px;
+  }
+
+  .fitiq-promo__box {
+    padding: 16px;
   }
 
   .ad-slot {
